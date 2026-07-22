@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Khoj — Smart Trek Planner</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header class="topbar">
+  <h1>🏔️ Khoj <span>Smart Trek Planner</span></h1>
+  <nav class="tabs">
+    <button class="tab-btn active" data-tab="explore">Explore Treks</button>
+    <button class="tab-btn" data-tab="recommend">Recommendations</button>
+    <button class="tab-btn" data-tab="risk">Risk Check</button>
+    <button class="tab-btn" data-tab="chat">Chat</button>
+  </nav>
+</header>
+
+<main>
+  <!-- Explore Treks -->
+  <section id="explore" class="tab-panel active">
+    <h2>Treks</h2>
+    <div id="trek-list" class="card-grid"></div>
+  </section>
+
+  <!-- Trek detail modal-ish panel -->
+  <section id="trek-detail" class="tab-panel">
+    <button id="back-to-explore" class="link-btn">&larr; Back to treks</button>
+    <div id="trek-detail-content"></div>
+  </section>
+
+  <!-- Recommendations -->
+  <section id="recommend" class="tab-panel">
+    <h2>Get Recommendations</h2>
+    <form id="reco-form" class="form-grid">
+      <label>Experience
+        <select name="experience">
+          <option value="beginner">Beginner</option>
+          <option value="intermediate">Intermediate</option>
+          <option value="advanced">Advanced</option>
+        </select>
+      </label>
+      <label>Fitness
+        <select name="fitness">
+          <option value="low">Low</option>
+          <option value="moderate" selected>Moderate</option>
+          <option value="high">High</option>
+        </select>
+      </label>
+      <label>Budget
+        <select name="budget">
+          <option value="low">Low</option>
+          <option value="medium" selected>Medium</option>
+          <option value="high">High</option>
+        </select>
+      </label>
+      <button type="submit">Get Recommendations</button>
+    </form>
+    <div id="reco-results" class="card-grid"></div>
+  </section>
+
+  <!-- Risk Check -->
+  <section id="risk" class="tab-panel">
+    <h2>Safety Risk Assessment</h2>
+    <form id="risk-form" class="form-grid">
+      <label>Latitude
+        <input type="number" step="any" name="lat" placeholder="e.g. 27.9881" required />
+      </label>
+      <label>Longitude
+        <input type="number" step="any" name="lon" placeholder="e.g. 86.9250" required />
+      </label>
+      <label>Date
+        <input type="date" name="date" />
+      </label>
+      <label>Elevation (m)
+        <input type="number" step="any" name="elevation_m" placeholder="e.g. 5364" />
+      </label>
+      <button type="submit">Assess Risk</button>
+    </form>
+    <div id="risk-result"></div>
+  </section>
+
+  <!-- Chat -->
+  <section id="chat" class="tab-panel">
+    <h2>Ask Khoj</h2>
+    <div id="chat-window"></div>
+    <form id="chat-form" class="chat-input-row">
+      <input type="text" id="chat-input" placeholder="Ask about a trek, e.g. Everest Base Camp" autocomplete="off" />
+      <button type="submit">Send</button>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <span id="api-status">Checking API…</span>
+</footer>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
